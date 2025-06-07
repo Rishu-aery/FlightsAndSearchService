@@ -13,7 +13,6 @@ const setupAndStartServer = async () => {
 
     app.listen(() => {
         console.log(`Server running at http://localhost:${PORT}`);
-        CityRepository.deleteCity(9);
     });
 }
 
