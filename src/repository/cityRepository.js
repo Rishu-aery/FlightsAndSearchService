@@ -1,3 +1,4 @@
+const { where } = require('sequelize');
 const { City } = require('../models/index.js');
 
 class CityRepository {
@@ -12,16 +13,39 @@ class CityRepository {
         }
     }
 
-    async deleteCity(cityId) {
+    async deleteCityById(cityId) {
         try {
             await City.destroy({
                 where: { id: cityId}
-            });  
+            });
+            return true;
         } catch (error) {
             console.error('Error deleting city:', error);
             throw error;  
         }
     }
+    async updateCity(cityId, data) {
+        try {
+            const city = await City.update(data, {
+                where: {id: cityId}
+            });
+            return city;
+        } catch (error) {
+            console.error('Error updating city:', error);
+            throw error;
+        }
+    }
+
+    async getCityById(cityId) {
+        try {
+            const city = await City.findByPk(cityId);
+            return city;
+        } catch (error) {
+            console.error('Error fetching city by ID:', error);
+            throw error;
+        }
+    }
+
 }
 
 module.exports = new CityRepository;
