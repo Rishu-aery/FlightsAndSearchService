@@ -64,6 +64,25 @@ const get = async (req, res) => {
     }
 }
 
+// GET -> /city
+const getAll = async (req, res) => {
+    try {
+        const city = await cityService.getAllCity();
+        res.status(200).json({
+            data: city,
+            success: true,
+        })
+    } catch (error) {
+        console.log("Error:", error);
+        res.status(501).json({
+            data: {},
+            success: false,
+            message: "Internal Server Error!",
+            err: error
+        });
+    }
+}
+
 // PUT -> city/:id
 const update = async (req, res) => {
     try {
@@ -89,5 +108,6 @@ module.exports = {
     create,
     destroy,
     get,
+    getAll,
     update
 }

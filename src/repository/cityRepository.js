@@ -52,6 +52,16 @@ class CityRepository {
         }
     }
 
+    async getAll() {
+        try {
+            const city = await City.findAll();
+            return city;
+        } catch (error) {
+            console.error('Error fetching city by ID:', error);
+            throw error;
+        }
+    }
+
 }
 
 module.exports = new CityRepository;
