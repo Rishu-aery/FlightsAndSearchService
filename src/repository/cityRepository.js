@@ -25,9 +25,16 @@ class CityRepository {
     }
     async updateCity(cityId, data) {
         try {
-            const city = await City.update(data, {
-                where: {id: cityId}
-            });
+            // Not return the update Object for mysql
+            // const city = await City.update(data, {
+            //     where: {id: cityId}
+            // });
+
+            // return the update Object
+            const city = await City.findByPk(cityId);
+            city.name = data.name;
+            city.save();
+            
             return city;
         } catch (error) {
             console.error('Error updating city:', error);
