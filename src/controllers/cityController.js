@@ -26,7 +26,7 @@ const create = async (req, res) => {
 // DELETE -> city/:id
 const destroy = async (req, res) => {
     try {
-        const { id } = req.params.id;
+        const { id } = req.params;
         const response = await cityService.deleteCityById(id);
         res.status(200).json({
             data: response,
@@ -47,7 +47,7 @@ const destroy = async (req, res) => {
 // GET -> city/:id
 const get = async (req, res) => {
     try {
-        const { id } = req.params.id;
+        const { id } = req.params;
         const city = await cityService.getCityById(id);
         res.status(200).json({
             data: city,
@@ -67,7 +67,7 @@ const get = async (req, res) => {
 // PUT -> city/:id
 const update = async (req, res) => {
     try {
-        const { id } = req.params.id;
+        const { id } = req.params;
         const data = req.body;
         const city = await cityService.updateCity(id, data);
         res.status(200).json({
