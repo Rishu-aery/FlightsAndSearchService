@@ -64,10 +64,12 @@ const get = async (req, res) => {
     }
 }
 
-// GET -> /city
+// GET -> /city?name
 const getAll = async (req, res) => {
     try {
-        const city = await cityService.getAllCity();
+        const filter = req.query;
+        console.log("QueryParams------------", filter);
+        const city = await cityService.getAllCity(filter);
         res.status(200).json({
             data: city,
             success: true,
