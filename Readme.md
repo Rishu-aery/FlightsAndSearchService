@@ -7,6 +7,7 @@
 - Add the following environment variables
 
     - `PORT = 3000`
+    - `SYNC_DB = false` : true if ypu want to sync your db using sequelize
 
 - Inside `src/config` create your mysql configuration as `config.json` with following json snippet.
 
