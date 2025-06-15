@@ -3,11 +3,10 @@ const { Op } = require("sequelize");
 const { City } = require("../models/index.js");
 
 class CityRepository {
-  async createCity(name) {
+  async createCity(cities) {
     try {
-      const city = await City.create({ name });
-      console.log("City created:", city.id, city.name);
-      return city;
+      const citiesList = await City.bulkCreate(cities);
+      return citiesList;
     } catch (error) {
       console.error("Error creating city:", error);
       throw error;
@@ -25,6 +24,7 @@ class CityRepository {
       throw error;
     }
   }
+
   async updateCity(cityId, data) {
     try {
       // Not return the update Object for mysql

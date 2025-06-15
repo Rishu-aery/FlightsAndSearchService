@@ -5,10 +5,16 @@ class CityService {
         this.cityRepository = CityRepository;
     }
 
-    async createCity(name) {
+    async createCity(cities) {
         try {
-            const city = await this.cityRepository.createCity(name);
-            return city;
+            if (Array.isArray(cities)) {
+                const city = await this.cityRepository.createCity(cities);
+                return city;
+            } else {
+                cities = [cities]
+                const city = await this.cityRepository.createCity(cities);
+                return city;
+            }
         } catch (error) {
             console.log('Error creating city:', error);
             throw (error);
