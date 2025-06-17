@@ -29,3 +29,9 @@ Once you have added your db config as mentioned above, go to the src directory i
 - `npx sequelize db:create` to create the database
 - `npx sequelize-cli model:generate --name <YOUR_TABLE_NAME> --attributes <YOUR_TABLE_ATTRIBUTES>` to create a model
 - `npx sequelize db:migrate` to run the migrations
+
+## Tables
+
+#### City -> id, name, createdAt, updatedAt
+#### Airport -> id, name, cityId, createdAt, updatedAt
+    Relationship: City hasMany Airports, Airport belongsTo City (1:M)
