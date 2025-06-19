@@ -1,4 +1,3 @@
-// const CityService = require("../services/cityService.js");
 const { CityService } = require("../services/index.js");
 
 const cityService = new CityService();
