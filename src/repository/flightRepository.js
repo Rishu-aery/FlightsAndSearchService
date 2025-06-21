@@ -10,6 +10,26 @@ class FlightsRepository {
       throw error;
     }
   }
+
+  async getFlightById(flightId) {
+    try {
+      const flight = await Flights.findByPk(flightId);
+      return flight;
+    } catch (error) {
+      console.error("Error fetching flight by ID:", error);
+      throw error;
+    }
+  }
+
+  async getFlightById(flightId) {
+    try {
+      const flight = await Flights.findByPk(flightId);
+      return flight;
+    } catch (error) {
+      console.error("Error fetching flight by ID:", error);
+      throw error;
+    }
+  }
 }
 
 module.exports = new FlightsRepository();

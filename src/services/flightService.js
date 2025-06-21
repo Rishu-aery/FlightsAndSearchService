@@ -16,6 +16,8 @@ class FlightService {
             throw error;
         }
     }
+
+    async 
 }
 
 module.exports = FlightService;
