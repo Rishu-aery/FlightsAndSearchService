@@ -23,6 +23,48 @@ const create = async (req, res) => {
     }
 }
 
+// GET -> /flight/:id
+const get = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const flight = await flightService.getFlightById(id);
+        res.status(200).json({
+            data: flight,
+            success: true,
+        })
+    } catch (error) {
+        console.log("Error:", error);
+        res.status(501).json({
+            data: {},
+            success: false,
+            message: "Internal Server Error!",
+            err: error
+        });
+    }
+}
+
+// GET -> /flights?filters
+const getAll = async (req, res) => {
+    try {
+        const filter = req.query;
+        const flight = await flightService.getAllFlights(filter);
+        res.status(200).json({
+            data: flight,
+            success: true,
+        })
+    } catch (error) {
+        console.log("Error:", error);
+        res.status(501).json({
+            data: {},
+            success: false,
+            message: "Internal Server Error!",
+            err: error
+        });
+    }
+}
+
 module.exports = {
-    create
+    create,
+    get,
+    getAll
 }
