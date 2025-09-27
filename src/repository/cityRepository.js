@@ -1,26 +1,18 @@
 const { Op } = require("sequelize");
 
 const { City } = require("../models/index.js");
+const CrudRepository = require("./crudRepository.js");
 
-class CityRepository {
+class CityRepository extends CrudRepository {
+  constructor() {
+    super(City);
+  }
   async createCity(cities) {
     try {
       const citiesList = await City.bulkCreate(cities);
       return citiesList;
     } catch (error) {
       console.error("Error creating city:", error);
-      throw error;
-    }
-  }
-
-  async deleteCityById(cityId) {
-    try {
-      await City.destroy({
-        where: { id: cityId },
-      });
-      return true;
-    } catch (error) {
-      console.error("Error deleting city:", error);
       throw error;
     }
   }
@@ -77,4 +69,3 @@ class CityRepository {
 }
 
 module.exports = new CityRepository();
-// This code defines a CityRepository class that interacts with the City model.

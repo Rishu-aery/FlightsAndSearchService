@@ -1,7 +1,9 @@
 const { CityRepository } = require("../repository/index.js");
+const CrudService = require("./crudService.js");
 
-class CityService {
+class CityService extends CrudService {
     constructor() {
+        super(CityRepository);
         this.cityRepository = CityRepository;
     }
 
@@ -17,16 +19,6 @@ class CityService {
             }
         } catch (error) {
             console.log('Error creating city:', error);
-            throw (error);
-        }
-    }
-
-    async deleteCityById(cityId) {
-        try {
-            const city = await this.cityRepository.deleteCityById(cityId);
-            return city;
-        } catch (error) {
-            console.log('Error deleting city:', error);
             throw (error);
         }
     }
