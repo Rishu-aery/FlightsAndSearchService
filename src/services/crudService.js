@@ -1,5 +1,3 @@
-const { CrudRepository } = require("../repository/index.js");
-
 class CrudService {
     constructor(repository) {
         this.repository = repository;
@@ -32,7 +30,7 @@ class CrudService {
         }
     }
 
-    async getAll() {
+    async getAll() { 
         try {
             const result = await this.repository.getAll();
             return result;
@@ -54,3 +52,5 @@ class CrudService {
         }
     }
 }
+
+module.exports = CrudService;

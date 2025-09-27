@@ -27,7 +27,7 @@ class CityRepository {
 
   async updateCity(cityId, data) {
     try {
-      // Not return the update Object for mysql
+      // Not return the updated Object for mysql
       // const city = await City.update(data, {
       //     where: {id: cityId}
       // });
