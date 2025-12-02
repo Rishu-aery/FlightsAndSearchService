@@ -41,11 +41,7 @@ class CrudService {
 
     async update(id, data) {
         try {
-            const result = await this.repository.update(data, {
-                where: {
-                    id: id
-                }
-            });
+            const result = await this.repository.update(id, data);
             return result;
         } catch (error) {
             throw new Error("Somthing went wrong in crud repo!");
