@@ -16,14 +16,32 @@ module.exports = {
       },
       airplaneId: {
         type: Sequelize.INTEGER,
+        onDelete: "RESTRICT",
+        references: {
+          model: "Airplanes",
+          key: "id",
+          as: "airplaneId"
+        },
         allowNull: false
       },
       departureAirportId: {
         type: Sequelize.INTEGER,
+        onDelete: "RESTRICT",
+        references: {
+          model: "Airports",
+          key: "id",
+          as: "departureAirportId"
+        },
         allowNull: false
       },
       arrivalAirportId: {
         type: Sequelize.INTEGER,
+        onDelete: "RESTRICT",
+        references: {
+          model: "Airports",
+          key: "id",
+          as: "arrivalAirportId"
+        },
         allowNull: false
       },
       arrivalTime: {

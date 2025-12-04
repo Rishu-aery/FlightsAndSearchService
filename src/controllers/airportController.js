@@ -1,4 +1,3 @@
-const { where } = require("sequelize");
 const { AirportService } = require("../services/index.js");
 
 const airport = new AirportService();
