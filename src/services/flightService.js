@@ -8,7 +8,7 @@ class FlightService {
   async createFlight(data) {
     try {
       if (!compareDateTime(data.arrivalTime, data.departureTime)) {
-        throw new Error("arrivalTime should be less then tha departureTime!");
+        throw new Error("arrivalTime cannot be less then tha departureTime!");
       }
       const airplane = await AirplaneRepository.getAirplaneById(
         data.airplaneId
